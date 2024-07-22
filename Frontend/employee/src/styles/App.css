@@ -1,3 +1,14 @@
+body {
+  background-color: #186972; /* Example color, adjust to the employee standard color */
+  color: white; /* Adjust text color if necessary */
+  height: 100vh; /* Ensure it covers the full height of the viewport */
+  margin: 0; /* Remove default margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .App {
     text-align: center;
     padding: 20px;
@@ -18,5 +29,29 @@
   
   button {
     margin-left: 10px;
+  }
+  html, body, #root, .App {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    margin-bottom: 0;
+  }
+  
+  .content {
+    flex: 1;
+    padding-top: 56px; /* Height of the navbar */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container-fluid {
+    flex: 1;
   }
   

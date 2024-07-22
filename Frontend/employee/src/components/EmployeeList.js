@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmployees } from '../features/employeeSlice';
 import { Link } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 const EmployeeList = () => {
   const dispatch = useDispatch();
@@ -16,15 +18,15 @@ const EmployeeList = () => {
   }, [dispatch, status]);
 
   return (
-    <div>
+    <div className="container mt-4">
       <h2>Employee List</h2>
-      <Link to="/add-employee">
-        <button>Add Employee</button>
+      <Link to="/add">
+        <Button variant="primary" className="mb-3">Add Employee</Button>
       </Link>
       {status === 'loading' && <p>Loading...</p>}
       {status === 'failed' && <p>Error: {error}</p>}
       {status === 'succeeded' && (
-        <table>
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>ID</th>
@@ -44,10 +46,16 @@ const EmployeeList = () => {
                 <td>{employee.age}</td>
                 <td>{employee.department}</td>
                 <td>{employee.employeeStatus}</td>
+                <td>  <Link
+                    to={`/edit`}
+                    state={{ employee }}
+                  >
+                    <Button variant="warning">Edit</Button>
+                  </Link></td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
     </div>
   );
