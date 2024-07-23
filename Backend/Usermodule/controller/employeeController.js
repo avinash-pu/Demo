@@ -94,7 +94,7 @@ const getEmployeeHistory = async (req, res) => {
         if (!histories.length) {
             return res.status(404).json({ message: 'No history found' });
         }
-        res.status(200).json(histories);
+        res.status(200).json({data:histories});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
