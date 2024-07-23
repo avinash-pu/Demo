@@ -123,3 +123,24 @@
   margin: 10px 0;
   font-size: 1rem;
 }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.table .short-col {
+  width: 50px; /* or any fixed width */
+}
+
+.table .long-col {
+  width: 300px; /* or any fixed width */
+}
+
+.table .expandable-col {
+  width: auto; /* allows column to expand based on content */
+}

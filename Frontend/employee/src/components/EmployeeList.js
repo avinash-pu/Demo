@@ -56,28 +56,29 @@ const EmployeeList = () => {
       {status === 'failed' && <p>Error: {error}</p>}
       {status === 'succeeded' && (
         <>
-          <Table striped bordered hover className="employee-list">
+        <div>
+          <Table striped bordered hover className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Age</th>
-                <th>Department</th>
-                <th>Status</th>
-                <th>Update</th>
-                <th>View</th>
+                <th className="short-col">ID</th>
+                <th className="short-col">Name</th>
+                <th className="short-long">Address</th>
+                <th className="short-col">Age</th>
+                <th className="short-col">Department</th>
+                <th className="short-col">Status</th>
+                <th className="short-col">Update</th>
+                <th className="short-col">View</th>
               </tr>
             </thead>
             <tbody>
               {employees.map((employee) => (
-                <tr key={employee._id}>
-                  <td>{employee.employeeId}</td>
-                  <td>{employee.employeeName}</td>
-                  <td>{employee.address}</td>
-                  <td>{employee.age}</td>
-                  <td>{employee.department}</td>
-                  <td>{employee.employeeStatus}</td>
+                <tr  key={employee._id}>
+                  <td className="short-col">{employee.employeeId}</td>
+                  <td className="short-col">{employee.employeeName}</td>
+                  <td className="long-col">{employee.address}</td>
+                  <td className="short-col">{employee.age}</td>
+                  <td className="short-col">{employee.department}</td>
+                  <td className="short-col">{employee.employeeStatus}</td>
                   <td>
                     <Link to={`/edit`} state={{ employee }}>
                       <Button variant="warning">Edit</Button>
@@ -96,6 +97,7 @@ const EmployeeList = () => {
               ))}
             </tbody>
           </Table>
+          </div>
           {/* Modal for displaying employee details, history, and location */}
           <Modal show={showModal} onHide={handleClose} size="lg">
             <Modal.Header closeButton>
@@ -132,15 +134,19 @@ const EmployeeList = () => {
                     <Table striped bordered hover>
                       <thead>
                         <tr>
-                          <th>Change Type</th>
-                          <th>Changed Address</th>
+                        <th>Department</th>
+                        <th>Status</th>
+
+                          <th> Address</th>
                         </tr>
                       </thead>
                       <tbody>
                         {history.map((each) => (
                           <tr key={each._id}>
-                            <td>{each.changeType}</td>
+                            <td>{each.changedData.department}</td>
+                            <td>{each.changedData.employeeStatus}</td>
                             <td>{each.changedData.address}</td>
+
                           </tr>
                         ))}
                       </tbody>
